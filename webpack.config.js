@@ -1,10 +1,11 @@
 const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   name: "wordRelay-settings",
-  // mode: "development",
-  mode: "production",
+  mode: "development",
   devtool: "eval",
+
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
@@ -30,12 +31,19 @@ module.exports = {
     ]
   },
 
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    })
+  ],
+
   entry: {
     app: ["./src/index.tsx"]
   },
 
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "app.js"
+    filename: "bundle.js"
   }
 };

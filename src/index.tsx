@@ -2,8 +2,8 @@ import React from "react";
 import ReactDom from "react-dom";
 import { hot } from "react-hot-loader/root";
 
-import Home from "../components/home";
+import App from "./App";
 
-const Hot = hot(Home);
+const Hot = hot(App);
 
 ReactDom.render(<Hot />, document.querySelector("#root"));

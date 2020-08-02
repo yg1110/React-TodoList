@@ -1,36 +1,42 @@
-import React, { useState } from "react";
-import { TodoList } from "./views/TodoList";
-import { AddTodoForm } from "./components/AddTodoForm";
+import React from "react";
+import { TodoList, Test } from "./router";
+import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import "./style/Header.scss";
 
-const initalTodos: Array<Todo> = [
-  { text: "Walk", complete: true },
-  { text: "Write", complete: false }
-];
+const navigationItems: Array<string> = ["Home", "Style"];
+const title: String = "TodoList";
 
 const App = () => {
-  const [todos, setTodos] = useState(initalTodos);
-  const toggleTodo: ToggleTodo = (selectedTodo: Todo) => {
-    const newTodos = todos.map(todo => {
-      if (todo === selectedTodo) {
-        return {
-          ...todo,
-          complete: !todo.complete
-        };
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
-
-  const addTodo: AddTodo = newTodo => {
-    newTodo.trim() !== "" &&
-      setTodos([...todos, { text: newTodo, complete: false }]);
-  };
-
   return (
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <AddTodoForm addTodo={addTodo} />
+      <header>
+        <h1 className="header__title">{title}</h1>
+      </header>
+      <BrowserRouter>
+        <nav>
+          <ul className="nav__navigation">
+            {navigationItems.map((navigationItem, i) => {
+              return (
+                <li key={navigationItem + i}>
+                  <Link
+                    className="nav__naviagtion--nav-text"
+                    to={"/" + navigationItem}
+                  >
+                    {navigationItem}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <section>
+          <Switch>
+            <Route path="/Home" component={TodoList}></Route>
+            <Route path="/Style" component={Test}></Route>
+            <Redirect path="*" to="/Home" />
+          </Switch>
+        </section>
+      </BrowserRouter>
     </>
   );
 };

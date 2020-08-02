@@ -1,19 +1,38 @@
-import React from "react";
-import { TodoListItem } from "../components/TodoListItem";
+import React, { useState } from "react";
+import { AddTodoForm } from "../components/TodoList/AddTodoForm";
+import { TodoListForm } from "../components/TodoList/TodoListForm";
 
-interface TodoListProps {
-  todos: Array<Todo>;
-  toggleTodo: ToggleTodo;
-}
+const initalTodos: Array<Todo> = [
+  { text: "Walk", complete: true },
+  { text: "Write", complete: false }
+];
 
-export const TodoList = ({ todos, toggleTodo }: TodoListProps) => {
+const TodoList = () => {
+  const [todos, setTodos] = useState(initalTodos);
+  const toggleTodo: ToggleTodo = (selectedTodo: Todo) => {
+    const newTodos = todos.map(todo => {
+      if (todo === selectedTodo) {
+        return {
+          ...todo,
+          complete: !todo.complete
+        };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
+  const addTodo: AddTodo = newTodo => {
+    newTodo.trim() !== "" &&
+      setTodos([...todos, { text: newTodo, complete: false }]);
+  };
+
   return (
-    <ul>
-      {todos.map(todo => {
-        return (
-          <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
-        );
-      })}
-    </ul>
+    <>
+      <TodoListForm todos={todos} toggleTodo={toggleTodo} />
+      <AddTodoForm addTodo={addTodo} />
+    </>
   );
 };
+
+export default TodoList;

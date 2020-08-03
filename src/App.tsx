@@ -1,7 +1,7 @@
 import React from "react";
 import { TodoList, Test } from "./router";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
-import "./style/Header.scss";
+import { HashRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import "./style/style.scss";
 
 const navigationItems: Array<string> = ["Home", "Style"];
 const title: String = "TodoList";
@@ -12,7 +12,7 @@ const App = () => {
       <header>
         <h1 className="header__title">{title}</h1>
       </header>
-      <BrowserRouter>
+      <HashRouter>
         <nav>
           <ul className="nav__navigation">
             {navigationItems.map((navigationItem, i) => {
@@ -36,7 +36,7 @@ const App = () => {
             <Redirect path="*" to="/Home" />
           </Switch>
         </section>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };

@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans:400");
+@import url("https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean");
+
+@font-face {
+  font-family: "S-CoreDream-9Black";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BMJUA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "Black Han Sans", sans-serif;
+}
+
+button {
+  font-family: "Black Han Sans", sans-serif;
+  color: #f57b8a;
+  font-size: 20px;
+}
+
+.검은고딕 {
+  font-family: "Black Han Sans", sans-serif;
+}
+
+.에스코어드림 {
+  font-family: "S-CoreDream-9Black";
+}
+
+.잘난체 {
+  font-family: "yg-jalnan";
+}
+
+.주아체 {
+  font-family: "BMJUA";
+}
+
+$pink: #ff9697;
+$light-gray: #e2e2e2;
+$gray: #8b8b8b;
+
+header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .header__title {
+    color: $pink;
+  }
+}
+
+nav {
+  .nav__navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-around;
+    .nav__naviagtion--nav-text {
+      color: $gray;
+      text-decoration: none;
+      font-size: 1.2rem;
+      // &:nth-child(n + 2) {
+      //   margin-left: 10rem;
+      // }
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+}
+
+section {
+  width: 100%;
+}
